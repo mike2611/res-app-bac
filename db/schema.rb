@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_31_041655) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_31_174415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_drinks", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "drink_id", null: false
+    t.bigint "bill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_bill_drinks_on_bill_id"
+    t.index ["drink_id"], name: "index_bill_drinks_on_drink_id"
+  end
+
+  create_table "bill_foods", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "food_id", null: false
+    t.bigint "bill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_bill_foods_on_bill_id"
+    t.index ["food_id"], name: "index_bill_foods_on_food_id"
+  end
 
   create_table "bills", force: :cascade do |t|
     t.float "total"
@@ -52,6 +72,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_041655) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bill_drinks", "bills"
+  add_foreign_key "bill_drinks", "drinks"
+  add_foreign_key "bill_foods", "bills"
+  add_foreign_key "bill_foods", "foods"
   add_foreign_key "bills", "tables"
   add_foreign_key "bills", "users"
 end
