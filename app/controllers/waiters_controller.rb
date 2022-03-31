@@ -1,2 +1,0 @@
-class WaitersController < ApplicationController
-end

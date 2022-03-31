@@ -1,2 +1,0 @@
-class Waiter < ApplicationRecord
-end
