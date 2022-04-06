@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BebidaTest < ActiveSupport::TestCase
+class BillDrinksControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
