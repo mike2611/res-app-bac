@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :waiters
   resources :drinks
-  resources :foods
+  resources :foods, only: [:index, :show, :create, :update, :destroy]
   resources :alimento_cuenta
   resources :alimentos
   resources :bebidas
