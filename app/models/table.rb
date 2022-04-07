@@ -1,6 +1,6 @@
 class Table < ApplicationRecord
   belongs_to :user
-  has_many :bills
+  has_one :bill
   validates :number, presence: true
   validates :people, presence: true, length: { minimum: 1 }
 end

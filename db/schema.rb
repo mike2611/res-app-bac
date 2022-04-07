@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_06_003154) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_07_040601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,10 +37,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_06_003154) do
   create_table "bills", force: :cascade do |t|
     t.float "total"
     t.bigint "user_id", null: false
-    t.bigint "table_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["table_id"], name: "index_bills_on_table_id"
+    t.integer "table_id", null: false
+    t.index ["table_id"], name: "index_bills_on_table_id", unique: true
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
 
